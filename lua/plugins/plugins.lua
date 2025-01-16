@@ -1,6 +1,7 @@
 return {
   { "github/copilot.vim" },
   {
+    -- Used for sticky scroll like behavior from vscode
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" }, -- Load when a file is opened
     dependencies = { "nvim-treesitter/nvim-treesitter" }, -- Ensure Tree-sitter is loaded first
@@ -51,10 +52,4 @@ return {
     "famiu/bufdelete.nvim",
     lazy = false,
   },
-  --  {
-  --    -- for closing buffers without closing windows
-  --    "ojroques/nvim-bufdel",
-  --    quit = false, -- quit Neovim when last buffer is closed
-  --    next = "tabs",
-  --  },
 }

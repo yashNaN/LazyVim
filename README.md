@@ -9,4 +9,5 @@ Yashwanth Modifications
 3. Added github-copilot  (run :Copilot setup to setup)
 4. Added clangd autocompletion
 5. Added nvim-treesitter-context for sticky scroll like behavior from vscode
+6. Added gitsigns -> shows git blame on current line
 
