@@ -10,4 +10,5 @@ Yashwanth Modifications
 4. Added clangd autocompletion
 5. Added nvim-treesitter-context for sticky scroll like behavior from vscode
 6. Added gitsigns -> shows git blame on current line
+7. remap contrl+n to create a new file
 
