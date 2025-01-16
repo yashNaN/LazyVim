@@ -19,14 +19,31 @@ return {
       })
     end,
   },
-  -- Load LazyVim and its Extras
   {
-    "LazyVim/LazyVim",
-    opts = {
-      -- Enable the desired extras plugin here
-      import = {
-        "lazyvim.extras.lang.clangd", -- Example: Add clang support
-      },
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp", -- LSP completion source
+      "hrsh7th/cmp-buffer", -- Buffer completion source
+      "hrsh7th/cmp-path", -- File path completion source
     },
+    config = function()
+      local cmp = require("cmp")
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For vsnip users
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = {
+          { name = "nvim_lsp" }, -- Enable LSP source
+          { name = "buffer" },
+          { name = "path" },
+        },
+      })
+    end,
   },
 }
