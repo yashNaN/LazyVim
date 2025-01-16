@@ -19,7 +19,7 @@ return {
       })
     end,
   },
-  {
+  { -- for auto completion
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp", -- LSP completion source
@@ -46,4 +46,15 @@ return {
       })
     end,
   },
+  {
+    -- for closing buffers without closing windows
+    "famiu/bufdelete.nvim",
+    lazy = false,
+  },
+  --  {
+  --    -- for closing buffers without closing windows
+  --    "ojroques/nvim-bufdel",
+  --    quit = false, -- quit Neovim when last buffer is closed
+  --    next = "tabs",
+  --  },
 }
