@@ -42,7 +42,7 @@ end, { desc = "Live grep in current file" })
 
 vim.keymap.set("n", "<leader>m", function()
     require("menu").open("default")
-end, {})
+end, { desc = "open menu" })
 
 -- mouse users + nvimtree users!
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
@@ -56,3 +56,7 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
 
     require("menu").open(options, { mouse = true })
 end, {})
+
+vim.keymap.set({ "n", "i" }, "<leader>k", function()
+    vim.diagnostic.open_float()
+end, { desc = "Expand error dialogue" })
