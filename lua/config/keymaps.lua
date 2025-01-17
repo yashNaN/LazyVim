@@ -18,7 +18,7 @@ vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", function()
-  require("telescope.builtin").oldfiles({
+  require("telescope.builtin").find_files({
     cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
     hidden = true, -- Include hidden files
   })
@@ -31,7 +31,3 @@ vim.keymap.set("n", "<C-f>", function()
     search_dirs = { vim.fn.expand("%:p") },
   })
 end, { desc = "Live grep in current file" })
-
-vim.keymap.set("n", "<leader><leader>", function()
-  require("fzf-lua").oldfiles()
-end, { desc = "Recently Accessed Files" })

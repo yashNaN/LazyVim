@@ -19,6 +19,7 @@ return {
 
         -- Enable preview for files
         file_ignore_patterns = { "node_modules", ".git/" },
+
         mappings = {
           i = {
             ["<C-j>"] = "move_selection_next", -- Ctrl+j to navigate down
@@ -27,13 +28,9 @@ return {
             ["<C-l>"] = "preview_scrolling_down", -- Ctrl+l to scroll preview down
             ["<C-q>"] = "close", -- Ctrl+q to close Telescope
             -- Scroll preview with the mouse wheel
-            ["<ScrollWheelUp>"] = require("telescope.actions").preview_scrolling_up,
-            ["<ScrollWheelDown>"] = require("telescope.actions").preview_scrolling_down,
           },
           n = {
             -- Scroll preview with the mouse wheel in normal mode
-            ["<ScrollWheelUp>"] = require("telescope.actions").preview_scrolling_up,
-            ["<ScrollWheelDown>"] = require("telescope.actions").preview_scrolling_down,
           },
         },
       },
@@ -44,7 +41,7 @@ return {
         },
         oldfiles = {
           prompt_title = "Recently Opened Files",
-          hidde = true,
+          hidden = true,
         },
         live_grep = {
           prompt_title = "Search",
