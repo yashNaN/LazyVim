@@ -25,17 +25,34 @@ vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
 -- end, { desc = "Find files from root directory" })
 
 vim.keymap.set("n", "<C-p>", function()
-  require("telescope.builtin").oldfiles({
-    cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
-    hidden = true, -- Include hidden files
-  })
+    require("telescope.builtin").oldfiles({
+        cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
+        hidden = true, -- Include hidden files
+    })
 end, { desc = "Find from recently used files" })
 
 vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
 
 vim.keymap.set("n", "<C-f>", function()
-  require("telescope.builtin").live_grep({
-    grep_open_files = true,
-    search_dirs = { vim.fn.expand("%:p") },
-  })
+    require("telescope.builtin").live_grep({
+        grep_open_files = true,
+        search_dirs = { vim.fn.expand("%:p") },
+    })
 end, { desc = "Live grep in current file" })
+
+vim.keymap.set("n", "<leader>m", function()
+    require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
+    require("menu.utils").delete_old_menus()
+
+    vim.cmd.exec('"normal! \\<RightMouse>"')
+
+    -- clicked buf
+    local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+    local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+
+    require("menu").open(options, { mouse = true })
+end, {})

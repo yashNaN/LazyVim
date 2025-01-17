@@ -15,4 +15,6 @@ Yashwanth Modifications
 9. Set up cntrl+f to fuzzy find in current file
 10. Set up cntrl + shift +f to find across workspace
 11. Setting up cntrl + p to search through recent files
+12. Adding menus with <leader>m
+13. Adding dashboard at beginning to open up recent projects
 
