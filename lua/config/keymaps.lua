@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 vim.keymap.set("n", "<leader>`", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<C-`>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>,", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 -- remap cntrl+w to delete a buffer, Bdelete is from a plugin that simulates closig tabs like vscode
 vim.keymap.set({ "n", "v", "i" }, "<C-w>", "<cmd>Bdelete<CR>", { desc = "Close buffer" })
@@ -16,13 +17,20 @@ vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
 -- end, { desc = "New file in Neo-tree" })
 --
 
-local builtin = require("telescope.builtin")
+-- vim.keymap.set("n", "<C-p>", function()
+--   require("telescope.builtin").find_files({
+--     cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
+--     hidden = true, -- Include hidden files
+--   })
+-- end, { desc = "Find files from root directory" })
+
 vim.keymap.set("n", "<C-p>", function()
-  require("telescope.builtin").find_files({
+  require("telescope.builtin").oldfiles({
     cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
     hidden = true, -- Include hidden files
   })
-end, { desc = "Find files from root directory" })
+end, { desc = "Find from recently used files" })
+
 vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
 
 vim.keymap.set("n", "<C-f>", function()

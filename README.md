@@ -4,7 +4,7 @@ A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
 
 Yashwanth Modifications
-1. <leader>` -> switch buffers (buffers are like vscode tabs)
+1. <leader> or control + \` -> switch buffers (buffers are like vscode tabs)
 2. cntrl+w -> close buffer (closes buffer and switches to a new buffer without closing current window)
 3. Added github-copilot  (run :Copilot setup to setup)
 4. Added clangd autocompletion
@@ -14,4 +14,5 @@ Yashwanth Modifications
 8. Added telescope to use for fuzzy finding files with cntrl+p
 9. Set up cntrl+f to fuzzy find in current file
 10. Set up cntrl + shift +f to find across workspace
+11. Setting up cntrl + p to search through recent files
 
