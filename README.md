@@ -11,4 +11,7 @@ Yashwanth Modifications
 5. Added nvim-treesitter-context for sticky scroll like behavior from vscode
 6. Added gitsigns -> shows git blame on current line
 7. remap contrl+n to create a new file
+8. Added telescope to use for fuzzy finding files with cntrl+p
+9. Set up cntrl+f to fuzzy find in current file
+10. Set up cntrl + shift +f to find across workspace
 
