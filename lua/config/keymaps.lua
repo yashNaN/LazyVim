@@ -24,6 +24,7 @@ vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
 --   })
 -- end, { desc = "Find files from root directory" })
 
+-- Searching
 vim.keymap.set("n", "<C-p>", function()
     require("telescope.builtin").oldfiles({
         cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
@@ -60,3 +61,8 @@ end, {})
 vim.keymap.set({ "n", "i" }, "<leader>k", function()
     vim.diagnostic.open_float()
 end, { desc = "Expand error dialogue" })
+
+-- Function for commenting
+vim.keymap.set("v", "<C-/>", function()
+    vim.cmd.norm("gc")
+end)

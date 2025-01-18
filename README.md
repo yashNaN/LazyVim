@@ -17,4 +17,5 @@ Yashwanth Modifications
 11. Setting up cntrl + p to search through recent files
 12. Adding menus with <leader>m
 13. Adding dashboard at beginning to open up recent projects
+14. Use cntrol + / on highlighted lines in visual mode to comment
 
