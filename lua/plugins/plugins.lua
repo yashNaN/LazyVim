@@ -54,5 +54,12 @@ return {
     },
     -- For menus in neovim
     { "nvzone/volt", lazy = true },
-    { "nvzone/menu", lazy = true },
+    {
+        "nvzone/menu",
+        lazy = true,
+        dependenceis = {
+            "nvimdev/lspsaga.nvim",
+        },
+        config = function() end,
+    },
 }

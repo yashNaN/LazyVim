@@ -42,21 +42,8 @@ vim.keymap.set("n", "<C-f>", function()
 end, { desc = "Live grep in current file" })
 
 vim.keymap.set("n", "<leader>m", function()
-    require("menu").open("default")
+    require("menu").open("default", { mouse = true })
 end, { desc = "open menu" })
-
--- mouse users + nvimtree users!
-vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
-    require("menu.utils").delete_old_menus()
-
-    vim.cmd.exec('"normal! \\<RightMouse>"')
-
-    -- clicked buf
-    local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-    local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
-
-    require("menu").open(options, { mouse = true })
-end, {})
 
 vim.keymap.set({ "n", "i" }, "<leader>k", function()
     vim.diagnostic.open_float()
@@ -66,3 +53,7 @@ end, { desc = "Expand error dialogue" })
 vim.keymap.set("v", "<C-/>", function()
     vim.cmd.norm("gc")
 end)
+
+-- Use ls-saga for function definitions
+vim.keymap.set("n", "vd", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover definition" })
+vim.keymap.set("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { desc = "Rename Symbol" })
