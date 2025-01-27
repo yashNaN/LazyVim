@@ -19,3 +19,4 @@ Yashwanth Modifications
 13. Adding dashboard at beginning to open up recent projects
 14. Use cntrol + / on highlighted lines in visual mode to comment
 15. Introducing lspsaga for hover tooltip with vd and rename symbol with <leader>r
+16. Set up q to go back one word
