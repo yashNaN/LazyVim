@@ -62,4 +62,8 @@ return {
         },
         config = function() end,
     },
+    -- For autocorrect
+    {
+        "https://github.com/ck-zhang/mistake.nvim",
+    },
 }
