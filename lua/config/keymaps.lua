@@ -60,3 +60,6 @@ vim.keymap.set("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { desc = "Rename Sym
 
 -- Change q from macro recording to moving back one word
 vim.keymap.set("n", "q", "b", { noremap = true, silent = true })
+
+-- Open copilot chat
+vim.keymap.set("n", "<leader>p", "<cmd>CopilotChatToggle<CR>", { desc = "Toggle copilot chat" })

@@ -66,4 +66,24 @@ return {
     {
         "https://github.com/ck-zhang/mistake.nvim",
     },
+    -- copilot chat
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        dependencies = {
+            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+        },
+        build = "make tiktoken", -- Only on MacOS or Linux
+        opts = {
+            -- See Configuration section for options
+            model = "gpt-4o",
+        },
+        -- See Commands section for default commands if you want to lazy load on them
+    },
+    -- typescript lsp
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
 }
