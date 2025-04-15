@@ -63,3 +63,4 @@ vim.keymap.set("n", "q", "b", { noremap = true, silent = true })
 
 -- Open copilot chat
 vim.keymap.set("n", "<leader>p", "<cmd>CopilotChatToggle<CR>", { desc = "Toggle copilot chat" })
+vim.keymap.set("n", "<leader>p", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle code companion " })
