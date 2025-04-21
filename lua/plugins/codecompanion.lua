@@ -1,6 +1,8 @@
 return {
     "olimorris/codecompanion.nvim",
-    opts = {},
+    opts = {
+        is_slash_cmd = true,
+    },
     config = function()
         require("codecompanion").setup({
             strategies = {

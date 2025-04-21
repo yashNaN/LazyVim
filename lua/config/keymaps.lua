@@ -63,4 +63,18 @@ vim.keymap.set("n", "q", "b", { noremap = true, silent = true })
 
 -- Open copilot chat
 vim.keymap.set("n", "<leader>p", "<cmd>CopilotChatToggle<CR>", { desc = "Toggle copilot chat" })
+
+-- Disable the below if using avante instead of code companion
 vim.keymap.set("n", "<leader>p", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle code companion " })
+vim.keymap.set(
+    { "n", "v", "i" },
+    "<leader>am",
+    "<cmd>CodeCompanionActions<CR>",
+    { noremap = true, desc = "CodeCompanion: Open companion menu " }
+)
+vim.keymap.set(
+    { "v" },
+    "<Leader>ac",
+    "<cmd>CodeCompanionChat Add<CR>",
+    { noremap = true, silent = true, desc = "CodeCompanion: Add selection to chat" }
+)
