@@ -53,10 +53,11 @@ return {
         lazy = false,
     },
     -- For menus in neovim
-    { "nvzone/volt", lazy = true },
+    { "nvzone/volt", lazy = true, enabled = false },
     {
         "nvzone/menu",
         lazy = true,
+        enabled = false,
         dependenceis = {
             "nvimdev/lspsaga.nvim",
         },
@@ -69,6 +70,7 @@ return {
     -- copilot chat
     {
         "CopilotC-Nvim/CopilotChat.nvim",
+        enabled = false,
         dependencies = {
             { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -85,5 +87,10 @@ return {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
+    },
+
+    -- command autocompletion
+    {
+        "gelguy/wilder.nvim",
     },
 }

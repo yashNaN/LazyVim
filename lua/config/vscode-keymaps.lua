@@ -9,47 +9,7 @@ vim.keymap.set({ "n", "v", "i" }, "<C-w>", "<cmd>Bdelete<CR>", { desc = "Close b
 
 -- remap contrl+n to create a new file with passed in name
 vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
--- remap contrl+n to create a new file with passed in name using neo-tree, but this doesn't change the window the new file
--- vim.keymap.set("n", "<C-n>", function()
---   local nt = require("neo-tree.sources.filesystem.commands")
---   local new_file_path = nt.add(require("neo-tree.sources.manager").get_state("filesystem"))
---   require("neo-tree.sources.filesystem.commands").open(new_file_path)
--- end, { desc = "New file in Neo-tree" })
---
 
--- vim.keymap.set("n", "<C-p>", function()
---   require("telescope.builtin").find_files({
---     cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
---     hidden = true, -- Include hidden files
---   })
--- end, { desc = "Find files from root directory" })
-
--- Searching
-vim.keymap.set("n", "<C-p>", function()
-    require("telescope.builtin").oldfiles({
-        cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
-        hidden = true, -- Include hidden files
-    })
-end, { desc = "Find from recently used files" })
-
-vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
-
-vim.keymap.set("n", "<C-f>", function()
-    require("telescope.builtin").live_grep({
-        grep_open_files = true,
-        search_dirs = { vim.fn.expand("%:p") },
-    })
-end, { desc = "Live grep in current file" })
-
-vim.keymap.set("n", "<leader>m", function()
-    require("menu").open("default", { mouse = true })
-end, { desc = "open menu" })
-
-vim.keymap.set({ "n", "i" }, "<leader>k", function()
-    vim.diagnostic.open_float()
-end, { desc = "Expand error dialogue" })
-
--- Function for commenting
 vim.keymap.set("v", "<C-/>", function()
     vim.cmd.norm("gc")
 end)

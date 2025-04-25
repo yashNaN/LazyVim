@@ -3,9 +3,10 @@ require("config.lazy")
 
 if vim.g.vscode then
     -- VSCode Neovim
-    require("confige.vscode-keymaps")
+    require("config.vscode-keymaps")
 else
     -- Ordinary Neovim
+    require("config.keymaps")
 end
 
 vim.o.autochdir = true
