@@ -22,7 +22,7 @@ return {
     },
     { -- for auto completion
         "hrsh7th/nvim-cmp",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp", -- LSP completion source
             "hrsh7th/cmp-buffer", -- Buffer completion source
@@ -33,7 +33,6 @@ return {
             cmp.setup({
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = {
                     { name = "nvim_lsp" }, -- Enable LSP source
