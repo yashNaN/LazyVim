@@ -23,17 +23,28 @@ vim.keymap.set("n", "<C-n>", ":e ", { desc = "Edit a file" })
 -- end, { desc = "New file in Neo-tree" })
 --
 
--- vim.keymap.set("n", "<C-p>", function()
---   require("telescope.builtin").find_files({
---     cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
---     hidden = true, -- Include hidden files
---   })
--- end, { desc = "Find files from root directory" })
+-- Helper function to find project root
+local function find_project_root()
+    local root_markers = { ".git", "Makefile", "pyproject.toml", "go.mod" }
+    local current_file = vim.fn.expand("%:p:h")
 
--- Searching
+    for _, marker in ipairs(root_markers) do
+        local root = vim.fn.finddir(marker, current_file .. ";")
+        if root ~= "" then
+            return vim.fn.fnamemodify(root, ":h")
+        end
+        root = vim.fn.findfile(marker, current_file .. ";")
+        if root ~= "" then
+            return vim.fn.fnamemodify(root, ":h")
+        end
+    end
+
+    return vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
+end
+
 vim.keymap.set("n", "<C-p>", function()
     require("telescope.builtin").oldfiles({
-        cwd = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd(),
+        cwd = find_project_root(),
         hidden = true, -- Include hidden files
     })
 end, { desc = "Find from recently used files" })

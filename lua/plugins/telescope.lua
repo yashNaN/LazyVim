@@ -20,6 +20,9 @@ return {
                 -- Enable preview for files
                 file_ignore_patterns = { "node_modules", ".git/" },
 
+                -- Project root detection
+                find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+
                 mappings = {
                     i = {
                         ["<C-j>"] = "move_selection_next", -- Ctrl+j to navigate down
@@ -39,13 +42,21 @@ return {
                 find_files = {
                     hidden = true, -- Show hidden files
                     mru = true,
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                    --                   cwd_only = true,
+                    find_root = true,
                 },
                 oldfiles = {
                     prompt_title = "Recently Opened Files",
                     hidden = true,
+                    --                  cwd_only = true,
+                    find_root = true,
                 },
                 live_grep = {
                     prompt_title = "Search",
+                    additional_args = function()
+                        return { "--hidden" }
+                    end,
                 },
             },
             extensions = {
