@@ -87,13 +87,13 @@ return {
         opts = {
             settings = {
                 tsserver_file_preferences = {
-                    includeInlayParameterNameHints = "all",
-                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                    includeInlayParameterNameHints = "none",
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
                     includeInlayFunctionParameterTypeHints = true,
-                    includeInlayVariableTypeHints = true,
-                    includeInlayPropertyDeclarationTypeHints = true,
-                    includeInlayFunctionLikeReturnTypeHints = true,
-                    includeInlayEnumMemberValueHints = true,
+                    includeInlayVariableTypeHints = false,
+                    includeInlayPropertyDeclarationTypeHints = false,
+                    includeInlayFunctionLikeReturnTypeHints = false,
+                    includeInlayEnumMemberValueHints = false,
                 },
             },
             root_dir = function(fname)
