@@ -95,6 +95,11 @@ return {
                     includeInlayFunctionLikeReturnTypeHints = false,
                     includeInlayEnumMemberValueHints = false,
                 },
+                tsserver_format_options = {
+                    allowIncompleteCompletions = false,
+                    allowRenameOfImportPath = false,
+                },
+                expose_as_code_action = { "fix_all", "organize_imports", "add_missing_imports", "remove_unused" },
             },
             root_dir = function(fname)
                 local util = require("lspconfig.util")

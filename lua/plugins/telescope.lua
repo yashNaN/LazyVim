@@ -18,10 +18,8 @@ return {
                 path_display = { "truncate" },
 
                 -- Enable preview for files
-                file_ignore_patterns = { "node_modules", ".git/" },
+                file_ignore_patterns = { ".git/" },
 
-                -- Project root detection
-                find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 
                 mappings = {
                     i = {
@@ -42,7 +40,7 @@ return {
                 find_files = {
                     hidden = true, -- Show hidden files
                     mru = true,
-                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                    find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" },
                     --                   cwd_only = true,
                     find_root = true,
                 },
