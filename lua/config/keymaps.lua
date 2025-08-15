@@ -75,6 +75,9 @@ end)
 vim.keymap.set("n", "vd", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover definition" })
 vim.keymap.set("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { desc = "Rename Symbol" })
 
+-- TypeScript imports
+vim.keymap.set("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>", { desc = "Add Missing Imports" })
+
 -- Change q from macro recording to moving back one word
 vim.keymap.set("n", "q", "b", { noremap = true, silent = true })
 
