@@ -98,3 +98,20 @@ vim.keymap.set(
     "<cmd>CodeCompanionChat Add<CR>",
     { noremap = true, silent = true, desc = "CodeCompanion: Add selection to chat" }
 )
+
+function GitRoot()
+	local dir = vim.fn.expand("%:p:h")
+	return vim.fn.systemlist("git -C " .. dir .. " rev-parse --show-toplevel")[1]
+end
+
+vim.keymap.set("n", "<leader>yp", function()
+	local full_path = vim.api.nvim_buf_get_name(0)
+	local git_root = GitRoot()
+	if git_root ~= "" then
+		local rel_path = vim.fn.fnamemodify(full_path, ":." .. git_root)
+		vim.fn.setreg("+", rel_path)
+		vim.notify("Yanked: " .. rel_path, vim.log.levels.INFO)
+	else
+		vim.notify("Not in a Git repository.", vim.log.levels.WARN)
+	end
+end, { desc = "Yank relative path from Git root" })
