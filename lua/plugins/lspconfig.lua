@@ -1,22 +1,29 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        clangd = {
-          -- point to your preferred binary:
-          cmd = { "/scratch/bazel/36bac8ee52e5d1559627454b12aa1b28/external/clang-21.1.1-x86_64/bin/clangd", "--background-index", "--clang-tidy","--header-insertion=iwyu", },
-          capabilities = (function()
-            local caps = vim.lsp.protocol.make_client_capabilities()
-            caps.offsetEncoding = { "utf-16" }
-            local ok, cmp = pcall(require, "cmp_nvim_lsp")
-            if ok then caps = cmp.default_capabilities(caps) end
-            return caps
-          end)(),
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                clangd = {
+                    -- point to your preferred binary:
+                    cmd = {
+                        "/scratch/bazel/36bac8ee52e5d1559627454b12aa1b28/external/clang-21.1.2-x86_64/bin/clangd",
+                        "--background-index",
+                        "--clang-tidy",
+                        "--header-insertion=iwyu",
+                    },
+                    capabilities = (function()
+                        local caps = vim.lsp.protocol.make_client_capabilities()
+                        caps.offsetEncoding = { "utf-16" }
+                        local ok, cmp = pcall(require, "cmp_nvim_lsp")
+                        if ok then
+                            caps = cmp.default_capabilities(caps)
+                        end
+                        return caps
+                    end)(),
+                },
+            },
         },
-      },
     },
-  },
 }
 -- return {
 --   "neovim/nvim-lspconfig",
