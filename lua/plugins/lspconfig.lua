@@ -6,7 +6,7 @@ return {
                 clangd = {
                     -- point to your preferred binary:
                     cmd = {
-                        "/scratch/bazel/36bac8ee52e5d1559627454b12aa1b28/external/clang-21.1.2-x86_64/bin/clangd",
+                        "/scratch/bazel/36bac8ee52e5d1559627454b12aa1b28/external/_main~_repo_rules~clang-22.1.2-x86_64/bin/clangd",
                         "--background-index",
                         "--clang-tidy",
                         "--header-insertion=iwyu",

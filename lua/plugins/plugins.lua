@@ -1,6 +1,14 @@
 return {
     { "github/copilot.vim" },
     {
+        -- Pin to legacy master branch: the new `main` branch shells out to the
+        -- `tree-sitter` CLI, whose prebuilt binary requires glibc >= 2.35 (this
+        -- box has 2.34). master compiles parsers via libuv + cc, no CLI needed.
+        "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        build = ":TSUpdate",
+    },
+    {
         -- Used for sticky scroll like behavior from vscode
         "nvim-treesitter/nvim-treesitter-context",
         event = { "BufReadPost", "BufNewFile" }, -- Load when a file is opened
