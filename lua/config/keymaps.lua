@@ -49,6 +49,15 @@ vim.keymap.set("n", "<C-p>", function()
     })
 end, { desc = "Find from recently used files" })
 
+vim.keymap.set("n", "<leader>f", function()
+    require("telescope.builtin").find_files({
+        cwd = vim.g.initial_cwd,
+        hidden = true,
+        find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" },
+        prompt_title = "Files (" .. vim.g.initial_cwd .. ")",
+    })
+end, { desc = "Find files from nvim root" })
+
 vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
 
 vim.keymap.set("n", "<C-f>", function()
