@@ -49,6 +49,33 @@ vim.keymap.set("n", "<C-p>", function()
     })
 end, { desc = "Find from recently used files" })
 
+vim.keymap.set("n", "<leader>f", function()
+    require("telescope.builtin").find_files({
+        cwd = vim.g.initial_cwd,
+        hidden = true,
+        find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" },
+        prompt_title = "Files (" .. vim.g.initial_cwd .. ")",
+    })
+end, { desc = "Find files from nvim root" })
+
+vim.keymap.set("n", "<leader><leader>", function()
+    require("telescope.builtin").git_files({
+        cwd = vim.g.initial_cwd,
+        show_untracked = false,
+        prompt_title = "Git Files (" .. vim.g.initial_cwd .. ")",
+    })
+end, { desc = "Find git-tracked files from nvim root" })
+
+vim.keymap.set("n", "<leader>/", function()
+    require("telescope.builtin").live_grep({
+        cwd = vim.g.initial_cwd,
+        additional_args = function()
+            return { "--hidden", "--no-ignore", "--glob", "!**/.git/*" }
+        end,
+        prompt_title = "Grep (" .. vim.g.initial_cwd .. ")",
+    })
+end, { desc = "Grep all files from nvim root" })
+
 vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
 
 vim.keymap.set("n", "<C-f>", function()
