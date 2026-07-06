@@ -49,6 +49,35 @@ vim.keymap.set("n", "<C-p>", function()
     })
 end, { desc = "Find from recently used files" })
 
+vim.keymap.set("n", "<leader>f", function()
+    require("telescope.builtin").find_files({
+        cwd = vim.g.initial_cwd,
+        hidden = true,
+        find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" },
+        prompt_title = "Files (" .. vim.g.initial_cwd .. ")",
+    })
+end, { desc = "Find files from nvim root" })
+
+vim.keymap.set("n", "<leader><leader>", function()
+    local git_root = GitRootOrCwd()
+    require("telescope.builtin").git_files({
+        cwd = git_root,
+        show_untracked = false,
+        prompt_title = "Git Files (" .. git_root .. ")",
+    })
+end, { desc = "Find git-tracked files from git root" })
+
+vim.keymap.set("n", "<leader>/", function()
+    local git_root = GitRootOrCwd()
+    require("telescope.builtin").live_grep({
+        cwd = git_root,
+        additional_args = function()
+            return { "--hidden", "--no-ignore", "--glob", "!**/.git/*" }
+        end,
+        prompt_title = "Grep (" .. git_root .. ")",
+    })
+end, { desc = "Grep all files from git root" })
+
 vim.keymap.set("n", "<C-S-f>", require("fzf-lua").live_grep, { desc = "fzf-lua live grep" })
 
 vim.keymap.set("n", "<C-f>", function()
@@ -102,6 +131,15 @@ vim.keymap.set(
 function GitRoot()
 	local dir = vim.fn.expand("%:p:h")
 	return vim.fn.systemlist("git -C " .. dir .. " rev-parse --show-toplevel")[1]
+end
+
+-- Git root of the current file, falling back to where nvim was launched from
+function GitRootOrCwd()
+	local root = GitRoot()
+	if root == nil or root == "" then
+		return vim.g.initial_cwd
+	end
+	return root
 end
 
 vim.keymap.set("n", "<leader>yp", function()
