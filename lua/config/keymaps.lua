@@ -7,6 +7,21 @@ if vim.g.vscode then
     return
 end
 
+-- Remove LazyVim's Alt+j/k line movement shortcuts after defaults load.
+-- This file also loads during startup, when those mappings may not exist yet.
+local function unmap_line_movement()
+    for _, mode in ipairs({ "n", "i", "x", "s" }) do
+        for _, key in ipairs({ "<A-j>", "<A-k>" }) do
+            pcall(vim.keymap.del, mode, key)
+        end
+    end
+end
+unmap_line_movement()
+vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimKeymapsDefaults",
+    callback = unmap_line_movement,
+})
+
 vim.keymap.set("n", "<leader>`", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<C-`>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>,", "<cmd>bprevious<CR>", { desc = "Previous buffer" })

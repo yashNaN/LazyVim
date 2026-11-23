@@ -4,9 +4,9 @@ return {
         opts = {
             servers = {
                 clangd = {
-                    -- point to your preferred binary:
+                    -- Use FrostDB's toolchain clangd so Mason cannot override the version.
                     cmd = {
-                        "/scratch/bazel/36bac8ee52e5d1559627454b12aa1b28/external/_main~_repo_rules~clang-22.1.2-x86_64/bin/clangd",
+                        "/home/repo/frostdb/bazel-frostdb/external/+artifactory_deps+clang-21.1.8-x86_64/bin/clangd",
                         "--background-index",
                         "--clang-tidy",
                         "--header-insertion=iwyu",
